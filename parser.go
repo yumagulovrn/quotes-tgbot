@@ -107,7 +107,7 @@ func worker(id int, wg *sync.WaitGroup, jobs <-chan entry, results chan<- entry)
 	for job := range jobs {
 		doc, err := htmlquery.LoadURL(job.v.(string))
 		if err != nil {
-			log.Printf("worker #%d: processing %s: error: %v\n", id, job.k, err)
+			log.Printf("worker %d: processing %s: error: %v\n", id, job.k, err)
 			wg.Done()
 			continue
 		}
